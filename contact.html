@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Yashwanth Samudrala</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="container">
+            <div class="header-left">
+                <h1><a href="index.html">YASHWANTH SAMUDRALA</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="skills.html">Skills</a></li>
+                    <li><a href="work.html">Work/Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <!-- <li><a href="Ask.html">Ask Me</a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content-with-fixed-header">
+        <div class="container">
+            <!-- Contact Information Section -->
+            <section class="contact-section">
+                <h2><i class="fas fa-address-card" style= "margin-right: 15px"></i> Contact Information</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-phone" style= "margin-right: 20px"></i>
+                        <h3>Phone</h3>
+                        <p>+1 (857) 961-7309</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"style= "margin-right: 10px"></i>
+                        <h3>Location</h3>
+                        <p>Boston, MA, USA</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" style= "margin-right: 20px"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:yashwanth.samudrala0512@gmail.com">yashwanth.samudrala0512@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe" style= "margin-right: 20px"></i>
+                        <h3>Website</h3>
+                        <p><a href="https://yashwanth0512.github.io/" target="_blank">yashwanth0512.github.io</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form Section -->
+            <section class="contact-section">
+                <h2><i class="fas fa-comment-dots"></i>&nbsp;&nbsp; Send a Message</h2>
+                <form class="contact-form" 
+                      action="https://docs.google.com/forms/d/e/1FAIpQLSeM8UXS-rfpHRQIXnatNd2dCOa0Y8_Z5wW76nGs2yAiXsCPrA/formResponse"
+                      method="POST"
+                      target="hiddenFrame"
+                      id="contact-form">
+                    
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="entry.1620160494" required>
+                    </div>
+            
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="entry.281412435" required>
+                    </div>
+            
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="entry.1419931357" required>
+                    </div>
+            
+                    <!-- Inquiry Type -->
+                    <div class="form-group">
+                        <label for="inquiry">Inquiry Type *</label>
+                        <select id="inquiry" name="entry.163457838" required>
+                            <option value="">Select an option</option>
+                            <option value="Job Opportunity">Job Opportunity</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Research Inquiry">Research Inquiry</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+            
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="entry.1431164554" rows="5" required></textarea>
+                    </div>
+            
+                    <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                    
+                    <!-- Success Message -->
+                    <div class="form-success" id="success-message" style="display: none;">
+                        Message sent successfully! 🎉
+                    </div>
+                </form>
+                
+                <!-- Hidden iframe for form submission -->
+                <iframe name="hiddenFrame" style="display: none;"></iframe>
+            </section>
+            <script>
+                document.getElementById('contact-form').addEventListener('submit', function(e) {
+                    const form = this;
+                    const submitBtn = form.querySelector('.submit-btn');
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+                    
+                    // Reset after 2 seconds (Google Forms needs time)
+                    setTimeout(() => {
+                        submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                        document.getElementById('success-message').style.display = 'block';
+                        form.reset();
+                    }, 2000);
+                });
+                </script>
+
+            <!-- Social Links Section -->
+            <section class="contact-section">
+                <h2><i class="fas fa-share-alt" style= "margin-right: 15px"></i> Connect With Me</h2>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yashwanth-samudrala-232a2021b/" target="_blank" class="social-item">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/yashwanth0512" target="_blank" class="social-item">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=JG-dE4AAAAAJ&hl=en" target="_blank" class="social-item">
+                        <i class="fas fa-graduation-cap" style="color: black;"></i>
+                        &nbsp;Google Scholar
+                    </a>
+                    <a href="https://x.com/samudrala_yashu" target="_blank" class="social-item">
+                        <i class="fab fa-twitter"></i>
+                        X
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
