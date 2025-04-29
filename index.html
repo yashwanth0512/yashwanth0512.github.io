@@ -1,43 +1,1199 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YASHWANTH SAMUDRALA</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <title>Yashwanth Samudrala - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a',
+                        secondary: '#0f172a',
+                        accent: '#3b82f6',
+                        light: '#f8fafc',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-divider {
+            height: 4px;
+            width: 70px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            margin: 0.5rem 0 1.5rem 0;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: rgba(15, 23, 42, 0.85);
+        }
+        
+        /* Fix for email overflow on mobile */
+        .email-container {
+            word-break: break-all;
+        }
+        
+        @media (min-width: 768px) {
+            .email-container {
+                word-break: normal;
+            }
+        }
+    </style>
 </head>
-<body>
-    <header class="fixed-header">
-        <div class="container">
-            <div class="header-left">
-                <h1><a href="index.html">YASHWANTH SAMUDRALA</a></h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="work.html">Work/Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <!-- <li><a href="Ask.html">Ask Me</a></li> -->
-                </ul>
+<body class="font-sans text-secondary bg-light">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary">YS<span class="text-accent">.</span></a>
+            
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            
+            <nav id="desktop-menu" class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active text-primary font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-primary font-medium">About</a>
+                <a href="#education" class="nav-link text-gray-600 hover:text-primary font-medium">Education</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-primary font-medium">Projects</a>
+                <a href="#skills" class="nav-link text-gray-600 hover:text-primary font-medium">Skills</a>
+                <a href="#publications" class="nav-link text-gray-600 hover:text-primary font-medium">Publications</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-primary font-medium">Contact</a>
             </nav>
         </div>
+        
+        <!-- Mobile Menu -->
+        <nav id="mobile-menu" class="hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-primary font-medium py-2">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-primary font-medium py-2">About</a>
+                <a href="#education" class="text-gray-600 hover:text-primary font-medium py-2">Education</a>
+                <a href="#projects" class="text-gray-600 hover:text-primary font-medium py-2">Projects</a>
+                <a href="#skills" class="text-gray-600 hover:text-primary font-medium py-2">Skills</a>
+                <a href="#publications" class="text-gray-600 hover:text-primary font-medium py-2">Publications</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary font-medium py-2">Contact</a>
+            </div>
+        </nav>
     </header>
 
-    <main class="content-with-fixed-header">
-        <div class= "container home-container">
-            <div class="photo-section">
-                <img src="PIC.JPG" alt="Your Name">
-            </div>
-            <div class="info-section">
-                <h2>Welcome</h2>
-                <p style="text-align: justify;">I’m Yashwanth Samudrala, a master’s student majoring in AI at Boston University. I have a strong interest in machine learning, data analysis, and automation, and I enjoy working on AI-driven solutions for real-world problems. My experience includes database systems, optimization techniques, and advanced computing concepts. I’m always eager to learn and apply AI in innovative ways to make a meaningful impact.</p>
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient text-white min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-4 py-16 md:py-32">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1">
+                    <p class="text-blue-200 mb-2">Hello, I'm</p>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Yashwanth Samudrala</h1>
+                    <div class="h-1 w-24 bg-accent mb-6"></div>
+                    <p class="text-xl mb-8">Artificial Intelligence Graduate Student at Boston University</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="bg-white text-primary hover:bg-blue-50 px-6 py-3 rounded-full font-medium transition duration-300">Get In Touch</a>
+                        <a href="#projects" class="border border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-full font-medium transition duration-300">View My Work</a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img src="propic.jpg" alt="Profile Picture" class="absolute inset-0 w-full h-full object-cover" />
+
+                        <!-- <svg class="absolute inset-0 w-full h-full text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                            
+                        </svg> -->
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
-</body>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">About Me</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-700 mb-6">
+                        I am a graduate student pursuing a Master's in Artificial Intelligence at Boston University. With a strong foundation in AI from my undergraduate studies, I am passionate about leveraging cutting-edge technologies to solve complex problems.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6">
+                        My research interests include deep learning, computer vision, and medical AI applications. I have worked on several projects involving image segmentation, predictive modeling, and reinforcement learning.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <p class="font-medium text-secondary">Name:</p>
+                            <p class="text-gray-600">Yashwanth Samudrala</p>
+                        </div>
+                        <div class="email-container">
+                            <p class="font-medium text-secondary">Email:</p>
+                            <p class="text-gray-600">yashwanth.samudrala0512@gmail.com</p>
+                        </div>
+                        <div>
+                            <p class="font-medium text-secondary">Phone:</p>
+                            <p class="text-gray-600">+1 857-961-7309</p>
+                        </div>
+                        <div>
+                            <p class="font-medium text-secondary">Location:</p>
+                            <p class="text-gray-600">Boston, MA</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/yashwanth-samudrala-232a2021b" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/yashwanth0512" target="_blank" class="bg-gray-800 hover:bg-gray-900 text-white p-3 rounded-full transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:yashwanth.samudrala0512@gmail.com" class="bg-red-500 hover:bg-red-600 text-white p-3 rounded-full transition duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-primary">Community Service</h3>
+                    <div class="mb-6">
+                        <h4 class="font-medium text-secondary">Awareness on Cybercrimes and Cybersecurity</h4>
+                        <p class="text-gray-600 mt-2">
+                            Interacted with students at GHS High School, Kulasekharapuram to raise awareness about cybercrimes, cybersecurity and how to navigate and overcome such situations.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-medium text-secondary">Reduce Food and Water Waste</h4>
+                        <p class="text-gray-600 mt-2">
+                            Demonstrated the value of food and water by showing videos, discussing the cons and providing fresh drinking water to the people in Vallikavu, Kerala.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Education</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-primary"></div>
+                    
+                    <!-- Boston University -->
+                    <div class="relative mb-12">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="flex-1 md:text-right md:pr-8 order-2 md:order-1">
+                                <h3 class="text-xl font-bold text-primary">Boston University</h3>
+                                <p class="text-lg font-medium">M.S in Artificial Intelligence</p>
+                                <p class="text-gray-600">Boston, MA | 2024-2026</p>
+                            </div>
+                            <div class="mb-4 md:mb-0 z-10 order-1 md:order-2">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 md:pl-8 order-3">
+                                <!-- Empty for layout -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Amrita Vishwa Vidyapeetham -->
+                    <div class="relative mb-12">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="flex-1 md:pr-8 order-2 md:order-1">
+                                <!-- Empty for layout -->
+                            </div>
+                            <div class="mb-4 md:mb-0 z-10 order-1 md:order-2">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 md:pl-8 order-3">
+                                <h3 class="text-xl font-bold text-primary">Amrita Vishwa Vidyapeetham</h3>
+                                <p class="text-lg font-medium">B.Tech in Artificial Intelligence</p>
+                                <p class="text-gray-600">Amritapuri, Kerala | 2020-2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Narayana Junior College -->
+                    <div class="relative mb-12">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="flex-1 md:text-right md:pr-8 order-2 md:order-1">
+                                <h3 class="text-xl font-bold text-primary">Narayana Junior College</h3>
+                                <p class="text-lg font-medium">Intermediate(+2), MPC</p>
+                                <p class="text-gray-600">Vijayawada, Andhra Pradesh | 2018-2020</p>
+                            </div>
+                            <div class="mb-4 md:mb-0 z-10 order-1 md:order-2">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 md:pl-8 order-3">
+                                <!-- Empty for layout -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sri Chaitanya International Olympiad School -->
+                    <div class="relative">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="flex-1 md:pr-8 order-2 md:order-1">
+                                <!-- Empty for layout -->
+                            </div>
+                            <div class="mb-4 md:mb-0 z-10 order-1 md:order-2">
+                                <div class="bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 md:pl-8 order-3">
+                                <h3 class="text-xl font-bold text-primary">Sri Chaitanya International Olympiad School</h3>
+                                <p class="text-lg font-medium">Secondary (10th)</p>
+                                <p class="text-gray-600">Vijayawada, Andhra Pradesh | 2017-2018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Academic Projects</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                            <img src="br_vasc.jpg" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Brain Vascular Work</h3>
+                        <p class="text-gray-600 mb-4">Leveraging AI and CFM for Improved Stroke Management and Outcome Prediction</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2024</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">AI</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Medical</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img src="cer.jpg" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Predictive Modeling of Cerebral Arterial Pressure</h3>
+                        <p class="text-gray-600 mb-4">Integrates computational fluid dynamics and AI to predict aneurysms</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2024</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">AI</span>
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">CFD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img src="speak.png" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Speaker Identification Using MFCC</h3>
+                        <p class="text-gray-600 mb-4">Feature Extraction using GMM, CNN, RNN, KNN and Random Forest Classifier</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2023</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Audio</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">ML</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img src="gprice.jpg" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Gold Price Analysis</h3>
+                        <p class="text-gray-600 mb-4">Using DQN (Deep Reinforcement Learning) for strategic investment decisions</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2023</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">RL</span>
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Finance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img src="imres.jpg" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Image Restoration using CNN</h3>
+                        <p class="text-gray-600 mb-4">Implemented CNN in MATLAB for restoring degraded images</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2022</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">CNN</span>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">MATLAB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img src="Twitter.jpg" alt="pic" class="absolute inset-0 w-full h-full object-cover" />
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="view-project bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-full transition duration-300">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-secondary mb-2">Live Twitter Hashtag Analysis</h3>
+                        <p class="text-gray-600 mb-4">Using Flask and Spark for real-time social media analysis</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">2022</span>
+                            <div class="flex space-x-2">
+                                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Flask</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">PySpark</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Technical Skills</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Programming Languages -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-code mr-3"></i>
+                        Programming Languages
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Python</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Java</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">HTML/CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">JavaScript</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">SQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">MATLAB</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Frameworks & Tools -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-tools mr-3"></i>
+                        Frameworks & Tools
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">TensorFlow</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">PyTorch</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Flask</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">Django</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">AWS</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium">MongoDB</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary rounded-full h-2" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Skills -->
+            <div class="mt-12">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-laptop-code mr-3"></i>
+                        Other Technical Skills
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">MySQL</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-cloud text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Google Cloud</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-network-wired text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Cisco Packet Tracer</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-cubes text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Solidworks</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fas fa-brain text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Scikit-Learn</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-linux text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Linux</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-windows text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">Windows</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg text-center">
+                            <i class="fab fa-apple text-primary text-2xl mb-2"></i>
+                            <p class="font-medium">MacOS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Publications</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Publication 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-primary mb-3">Examining Amazon Customer Reviews using PySpark and AWS: A Data Lake Approach</h3>
+                    <p class="text-gray-600 mb-4">
+                        This publication explores the use of PySpark and AWS services to analyze large-scale Amazon customer reviews, implementing a data lake architecture for efficient processing and insights.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10307845" target="_blank" class="text-accent hover:text-blue-700 font-medium flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Publication 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-primary mb-3">Speaker Identification Using MFCC Feature Extraction</h3>
+                    <p class="text-gray-600 mb-4">
+                        A comparative study using GMM, CNN, RNN, KNN and Random Forest Classifier for speaker identification, analyzing the effectiveness of different machine learning approaches.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10335892" target="_blank" class="text-accent hover:text-blue-700 font-medium flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Publication 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-primary mb-3">Neuro-Vascular Mapping of Junctions in Human Brain from MRI Scans</h3>
+                    <p class="text-gray-600 mb-4">
+                        This research focuses on mapping neural vascular junctions in the human brain using advanced image segmentation techniques on MRI scans, contributing to neurological diagnostics.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10404758" target="_blank" class="text-accent hover:text-blue-700 font-medium flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Publication 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-xl font-bold text-primary mb-3">Image Captioning: Analyzing CNN-LSTM and Vision-GPT Models</h3>
+                    <p class="text-gray-600 mb-4">
+                        A comparative analysis of traditional CNN-LSTM architectures and newer Vision-GPT models for image captioning tasks, evaluating performance metrics and real-world applications.
+                    </p>
+                    <div class="flex justify-end">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/10543514" target="_blank" class="text-accent hover:text-blue-700 font-medium flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Certifications & Courses</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Certification 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-certificate text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Python for Data Science</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">NPTEL & IIT MADRAS</p>
+                </div>
+                
+                <!-- Certification 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-shield-alt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Introduction to Cybersecurity</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">CISCO</p>
+                </div>
+                
+                <!-- Certification 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-cloud text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Introduction to Cloud Computing</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">Coursera</p>
+                </div>
+                
+                <!-- Certification 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-brain text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Fundamentals of Deep Learning</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">NVIDIA</p>
+                </div>
+                
+                <!-- Certification 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-laptop-code text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Advanced Deep Learning with Keras</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">Datacamp</p>
+                </div>
+                
+                <!-- Certification 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-code text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-secondary">Fullstack Web Developer Course</h3>
+                    </div>
+                    <p class="text-gray-600 mb-2">Udemy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-secondary">Get In Touch</h2>
+                <div class="section-divider mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div class="email-container">
+                                <h4 class="font-medium text-secondary">Email</h4>
+                                <p class="text-gray-600">yashwanth.samudrala0512@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary">Phone</h4>
+                                <p class="text-gray-600">+1 857-961-7309</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary">Location</h4>
+                                <p class="text-gray-600">Boston, Massachusetts</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fab fa-linkedin-in text-primary"></i>
+                            </div>
+                            <div class="email-container">
+                                <h4 class="font-medium text-secondary">LinkedIn</h4>
+                                <a href="https://linkedin.com/in/yashwanth-samudrala-232a2021b" target="_blank" class="text-accent hover:text-blue-700">linkedin.com/in/yashwanth-samudrala-232a2021b</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fab fa-github text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-secondary">GitHub</h4>
+                                <a href="https://github.com/yashwanth0512" target="_blank" class="text-accent hover:text-blue-700">github.com/yashwanth0512</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">Send Me a Message</h3>
+
+                    <form
+                    id="contact-form"
+                    class="space-y-6"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSeM8UXS-rfpHRQIXnatNd2dCOa0Y8_Z5wW76nGs2yAiXsCPrA/formResponse"
+                    method="POST"
+                    target="hiddenFrame"
+                    >
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input
+                            type="text"
+                            id="name"
+                            name="entry.1620160494"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                            required
+                            >
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input
+                            type="email"
+                            id="email"
+                            name="entry.281412435"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                            required
+                            >
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input
+                            type="text"
+                            id="subject"
+                            name="entry.1419931357"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                            required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiry" class="block text-sm font-medium text-gray-700 mb-1">Inquiry Type</label>
+                            <select id="inquiry" name="entry.163457838" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                <option value="">Select an option</option>
+                                <option value="Job Opportunity">Job Opportunity</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="Research Inquiry">Research Inquiry</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea
+                            id="message"
+                            name="entry.1431164554"
+                            rows="4"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                            required
+                            ></textarea>
+                        </div>
+                        <div>
+                            <button
+                            type="submit"
+                            class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition duration-300"
+                            >
+                            Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <!-- <h3 class="text-2xl font-bold text-primary mb-6">Send Me a Message</h3>
+                    <form id="contact-form" class="space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSeM8UXS-rfpHRQIXnatNd2dCOa0Y8_Z5wW76nGs2yAiXsCPrA/formResponse" method="POST" target="hiddenFrame">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="bg-primary hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Send Message</button>
+                        </div>
+                    </form> -->
+                    <iframe name="hiddenFrame" style="display: none;"></iframe>
+                    <div id="form-message" class="mt-4 hidden">
+                        <p class="text-green-600 font-medium">Thank you for your message! I'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold">Yashwanth Samudrala</h2>
+                    <p class="text-blue-300 mt-2">AI Graduate Student</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://linkedin.com/in/yashwanth-samudrala-232a2021b" target="_blank" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/yashwanth0512" target="_blank" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:yashwanth.samudrala0512@gmail.com" class="bg-white bg-opacity-10 hover:bg-opacity-20 p-3 rounded-full transition duration-300">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Yashwanth Samudrala. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-primary"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hidden hover:bg-blue-700 transition duration-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navigation Active Link
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Project Modal
+        const viewProjectButtons = document.querySelectorAll('.view-project');
+        const projectModal = document.getElementById('project-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        
+        const projectDetails = {
+            'Brain Vascular Work': {
+                title: 'Brain Vascular Work: Leveraging AI and CFM for Improved Stroke Management',
+                description: 'AI-based image segmentation and flow simulation models for personalized aneurysm management, utilizing 3D U-Net and vascular porous models to predict stroke risk. This project combines advanced deep learning techniques with computational fluid mechanics to create a comprehensive system for early detection and management of cerebrovascular conditions.',
+                technologies: ['TensorFlow', '3D U-Net', 'Image Segmentation', 'CFD', 'Medical Imaging'],
+                year: '2024'
+            },
+            'Predictive Modeling of Cerebral Arterial Pressure': {
+                title: 'Predictive Modeling of Cerebral Arterial Pressure Patterns from MRA Imaging',
+                description: 'This project integrates computational fluid dynamics and AI to predict aneurysms by analyzing brain blood vessel pressure, highlighting high-risk areas for early intervention. It emphasizes transparent methods to improve diagnosis and personalized care. The system processes MRA images to create detailed vascular maps and simulates blood flow to identify potential problem areas.',
+                technologies: ['PyTorch', 'CFD', 'MRA Imaging', 'Neural Networks', 'Medical AI'],
+                year: '2024'
+            },
+            'Speaker Identification Using MFCC': {
+                title: 'Speaker Identification Using MFCC Feature Extraction',
+                description: 'Implemented speaker identification using MFCC features, incorporating CNN, GMM, RNN, and Decision Tree techniques to accurately identify speakers. The system extracts Mel-Frequency Cepstral Coefficients from audio samples and uses various machine learning algorithms to classify speakers based on their unique vocal characteristics.',
+                technologies: ['Python', 'MFCC', 'CNN', 'RNN', 'GMM', 'Random Forest'],
+                year: '2023'
+            },
+            'Gold Price Analysis': {
+                title: 'Gold Price Analysis using DQN (Deep Reinforcement Learning)',
+                description: 'Developed a system to analyze gold prices using Deep Q-Learning, enabling strategic investment decisions and maximizing cumulative profits over time. The model was trained on historical gold price data and learned optimal buying and selling strategies through reinforcement learning techniques.',
+                technologies: ['Deep Q-Learning', 'TensorFlow', 'Time Series Analysis', 'Financial Modeling'],
+                year: '2023'
+            },
+            'Image Restoration using CNN': {
+                title: 'Image Restoration using CNN',
+                description: 'Implemented Convolutional Neural Networks (CNN) in MATLAB for image restoration and successfully restored degraded images by employing advanced deep learning techniques. Addressed complex issues such as noise and flaws in the images, resulting in a significant enhancement of overall image quality.',
+                technologies: ['MATLAB', 'CNN', 'Image Processing', 'Deep Learning'],
+                year: '2022'
+            },
+            'Live Twitter Hashtag Analysis': {
+                title: 'Live Twitter Hashtag Analysis using Flask and Spark',
+                description: 'Executed live Twitter hashtag analysis using Flask and PySpark by taking a developer account, focusing on computer networks. The data is taken and employed with segmentation methods to display the top hashtags, providing personalized choices. The system processes tweets in real-time to identify trending topics and patterns.',
+                technologies: ['Flask', 'PySpark', 'Twitter API', 'Real-time Processing', 'Data Visualization'],
+                year: '2022'
+            }
+        };
+        
+        viewProjectButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const projectCard = button.closest('.project-card');
+                const projectTitle = projectCard.querySelector('h3').textContent;
+                const project = projectDetails[projectTitle];
+                
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    
+                    let content = `
+                        <p class="text-gray-600 mb-6">${project.description}</p>
+                        <div class="mb-6">
+                            <h4 class="font-medium text-secondary mb-2">Technologies Used:</h4>
+                            <div class="flex flex-wrap gap-2">
+                    `;
+                    
+                    project.technologies.forEach(tech => {
+                        content += `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">${tech}</span>`;
+                    });
+                    
+                    content += `
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">Year: ${project.year}</div>
+                    `;
+                    
+                    modalContent.innerHTML = content;
+                    projectModal.classList.remove('hidden');
+                }
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            projectModal.classList.add('hidden');
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.add('hidden');
+            }
+        });
+        
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        
+        contactForm.addEventListener('submit', function () {
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+        
+            // Disable button & show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending…';
+        
+            // Allow the form to actually submit into the hidden iframe,  
+            // then show success + reset after a short delay
+            setTimeout(() => {
+            // Restore button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        
+            // Show success message
+            formMessage.classList.remove('hidden');
+        
+            // Clear the form fields
+            form.reset();
+        
+            // Hide success message again after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+            }, 2000);
+        });
+          
+
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9379e44953c08fd8',t:'MTc0NTg3ODI0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
